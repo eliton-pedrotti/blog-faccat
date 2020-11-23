@@ -1,0 +1,27 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Os campos não podem ficar vazios!</p>
+    </div>
+  <% end %>
+
+  <%= label f, :Título %>
+  <%= text_input f, :title %>
+  <%= error_tag f, :title %>
+
+  <%= label f, :Conteúdo %>
+  <%= textarea f, :body %>
+  <%= error_tag f, :body %>
+
+  <%= label f, :Autor %>
+  <%= textarea f, :author %>
+  <%= error_tag f, :author %>
+
+  <%= label f, :Data %>
+  <%= textarea f, :date %>
+  <%= error_tag f, :date %>
+
+  <div>
+    <%= submit "Salvar" %>
+  </div>
+<% end %>

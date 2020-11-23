@@ -1,0 +1,31 @@
+<h1>Bem vindo ao TecBlog!</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+     
+      <th>Autor</th>
+      <th>Data</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for post <- @posts do %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.author %></td>
+      <td><%= post.date %></td>
+
+      <td>
+        <span><%= link "Abrir", to: Routes.post_path(@conn, :show, post) %></span>
+        <span><%= link "Editar", to: Routes.post_path(@conn, :edit, post) %></span>
+        <span><%= link "Deletar", to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Tem certeza que deseja deletar?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "Criar um novo post", to: Routes.post_path(@conn, :new) %></span>
